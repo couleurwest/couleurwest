@@ -1,0 +1,17 @@
+{% macro render_field(field) %}
+<label>{{ field.label.text }}
+    {{ field(placeholder=field.label.text, **kwargs)}}
+
+    {% if field.errors %}
+        {% for error in field.errors %}
+            <span class="form-error" data-form-error-for="">{{ errors }}</span>
+        {% endfor %}
+    {% endif %}
+</label>
+{% endmacro %}
+
+{% macro render_nonamed(field) %}
+    <div class="text-center">
+        {{ field(placeholder= field.label.text, **kwargs) }}
+    </div>
+{% endmacro %}

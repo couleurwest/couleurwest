@@ -1,0 +1,76 @@
+index:
+  -
+    uuid: standalone
+    content: >
+      Une application «standalone» est un programme à part entière, qui peut s'utiliser seul.
+      Nul besoin d'internet ou d'un application tiers : télécharger, lancer, utiliser...
+    detail:
+      -
+        uuid: qrcodemaker
+        title : QRCode Maker
+        information : |
+          Il existe de multitude de services web qui vous permettrons de générer des QRCode, mais si vous le faisiez autant de fois que vous en aviez envie depuis votre ordinateur ?
+          Et si penser consommation saine rimait avec consommation utile ?
+        topic: > 
+          Pour aller plus loin : génerer vos cartes professionnelles (badge ou carte de visite) en interne, incorporer votre QRCode à vos support de communication...
+        downloads: link
+  -
+    uuid: webservices
+    content: >
+      Un service Web est une service mis à disposition via Internet" permettant de manipuler des données à travers la toile. Cela peut être un site marchand, un service intranet telqu'une gestion des congés, un service de gestion d'incidents ou assistance utilisateurs.
+    detail:
+      -
+        uuid: couleurdelouest
+        title : Les couleurs de l'ouest
+        information : |
+          Magazine numérique.
+        topics: > 
+          Les couleurs de l'ouest est le premier magazine guyanais participatif dont l'object est de permettre une diffusion, valorisation de la Guyana par les guyanais.
+          Annoncer vos évènement, votre actualité, présenter des artistes...
+        downloads: link
+      -
+        uuid: projectmanager
+        title: Project Manager
+        information: |
+          Gestion de projet assistée
+        topics: "Centraliser la gestion de vos projets et de vos équipes. Ne perdez plus le fil de la conversation."
+        downloads: link
+      -
+        uuid: lagalette
+        title: La galette 3.0
+        information: |
+          La galette des rois en ligne
+        topics: >
+          6 participant par galette maximum, 3 galette par participant maximum
+        downloads: link
+  -
+    title: android
+    uuid: android
+    content: >
+      Les webService présentées ici ont été conçut et réaliser par Couleur WEST IT. 
+      Découvrez des outils du quotidien, adaptable, prêt à emporté. Entrer dans le numérique 3.0      
+    detail:
+        -
+          title : La E-Card
+          uuid: ecard
+          image: images/projets/android_1.png
+          information : | 
+            Partagez l'essentiel, de manière efficace, avec votre carte de visite numérique 3.0.<br/>
+            Vos contacts enregistrent vos coordonnées <i>(nom, prénom, email, nom de votre entreprise, télephones, site web)</i> sans fautes d'orthographes et sans autre action qu'un simple scan d'un QRCode.
+            <p>Votre carte de visite enregisté directement dans leur répertoire et/ou votre site directement sur leur appareil mobile.</p>
+          topic: |
+            Faites un petit geste pour l'environnement d'une manière efficace.<br/>
+            Ne laissez plus de cartes "papier" oubliées au fond de portefeuilles ou de poubelles, ou encore jonchant le bitume.
+          downloads: link
+  -
+    title: Connexion
+    uuid: connexion
+    content: >
+      Connectez-vous à votre espace personnelle et bénéficier gratuitement de nos services en expositions.
+wwwproject:
+  title: West Wild Web Project
+  subtitle: Projet "toile sauvage de l'ouest"
+  info : | 
+    <h3>Bienvenue dans la galerie "World Wide West Project"</h3>
+    Découvrez les possibilités qui s'offrent à vous, visualiser pour envisager et imaginez un monde à votre image. 
+    Connectez-vous et téléchargez des solutions prêtes à exploiter ;  ces applications, libre d'utilisation, peuvent être adaptées: demandez un devis.

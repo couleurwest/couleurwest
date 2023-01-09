@@ -1,0 +1,91 @@
+$color_primary_lite: #9fb68e
+$color_primary: #607352
+$color_primary_dark: #21362d
+
+$color_secondary_dark: #62463a
+$color_secondary: #937264
+$color_secondary_lite: #ceab9d
+
+
+$color_success_lite: #8fd2bd
+$color_success: #368d76
+$color-success-dark: #1f5245
+
+$color-warning-dark: #70391b
+$color_warning: #de7137
+$color-warning-lite: #FFA345FF
+
+$color_alert_dark: #462b3e
+$color_alert: #855e79
+$color_alert_lite: #d3a7c6
+
+$color-info-dark:       #22427C
+$color-info: #405f98
+$color-info_lite: #92b6dc
+
+$color_flash: #931e3e
+$color_flash_lite: #ee6e91
+
+
+$success : ( "dark": $color-success-dark, "primary": $color-success, "lite": $color-success-lite )
+$infos : ( "dark": $color-info-dark, "primary": $color-info, "lite": $color-info-lite )
+$warnings : ("dark": $color-warning-dark, "primary": $color-warning, "lite": $color-warning-lite )
+$alerts : ( "dark": $color-alert-dark, "primary": $color-alert, "lite": $color-alert-lite )
+
+$primary : ( "primary": $color-primary, "lite": $color-primary-lite , "dark": $color-primary-dark )
+$secondary : ("primary": $color-secondary, "lite": $color-secondary-lite, "dark": $color-secondary-dark )
+
+$colors:  ("primary" : $primary, "secondary" : $secondary,"success" : $success, "info" : $infos, "warning" : $warnings, "alert": $alerts)
+$theme_trio: ["success", "info", "warning", "alert", "primary", "secondary",]
+
+@each $v in $theme_trio
+    .bg-#{$v}
+      $c: map-get($colors, $v)
+      background-color: map-get($c, "primary")!important
+      color:  map-get($c, "lite")!important
+      border-color:  map-get($c, "dark")!important
+
+      &.button:hover
+        background-color: map-get($c, "lite")!important
+        color:  map-get($c, "dark")!important
+        border-color:  map-get($c, "primary")!important
+
+
+
+
+
+$flash : ( "primary": $color-flash, "lite": $color-flash-lite )
+$android : ( "primary": $color-secondary-dark, "lite": $color-secondary-lite )
+$standalone : ( "primary": $color-alert-dark, "lite": $color-alert-lite )
+$webservices : ( "primary": $color-info-dark, "lite": $color-info-lite )
+
+$colors_duo:  ( "flash" : $flash,"webservices": $webservices, "android": $android, "standalone": $standalone)
+$theme_duo: [ "flash", "webservices", "android", "standalone"]
+
+
+@each $v in $theme_duo
+    .bg-#{$v}, a.bg-#{$v}
+      $c: map-get($colors_duo, $v)
+
+      background-color: map-get($c, "primary")!important
+      color:  map-get($c, "lite")!important
+      border-color:  map-get($c, "lite")!important
+
+      &.button:hover
+        background-color: map-get($c, "lite")!important
+        color:  map-get($c, "primary")!important
+        border-color:  map-get($c, "primary")!important
+
+@each $k, $v in $colors
+  @each $z, $w in  $v
+    .txt-#{$k}-#{$z}
+      color: $w!important
+    .brd-#{$k}-#{$z}
+      border-color: $w!important
+
+@each $k, $v in $colors_duo
+  @each $z, $w in  $v
+    .txt-#{$k}-#{$z}
+      color: $w!important
+    .brd-#{$k}-#{$z}
+      border-color: $w!important

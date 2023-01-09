@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        {% include 'widget/metas' %}
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta class="foundation-mq">
+
+        <title>{{title}}</title>
+
+        <link rel="stylesheet" href="{{url_for ('static', filename='css/normalize.css')}}">
+        <link rel="stylesheet" href="{{url_for ('static', filename='css/foundplus.css')}}">
+        <link rel="stylesheet" href="{{url_for ('static', filename='css/foundation-icons/foundation-icons.css')}}">
+        <link rel="stylesheet" href="{{url_for ('static', filename='css/socialicon.css')}}">
+
+        <link rel="stylesheet" href="{{url_for ('static', filename='css/wwwproject.min.css')}}">
+    </head>
+<body class="grid-container full {{page }} {{ mode or 'home'}} is-hidden" >
+    <header data-sticky-container style="z-index:50" >
+        <section data-sticky data-margin-top>
+            <header id='main_header'  class="top-bar top-bar-sticky-shrink shadow align-center padding-vertical-1 bg-secondary-lite">
+            <div class="media-object ">
+                <div class="media-object-section">
+                <div class="">
+                    <img src="{{url_for('static', filename='images/wwwproject_logo.png')}}"/>
+                </div>
+                </div>
+                <div class="media-object-section grid-x align-center-middle">
+              <div class="">
+                <h3>{{header.info | safe}}</h3>
+              </div>
+            </div>
+            </div>
+            </header>
+            <div class="top-bar top-bar-sub grid-x grid-padding-x">
+
+                <div class="cell small-12 medium-4 txt-{{main_content.uuid}}-lite"> <h1 class="margin-0"><img copyright="cc-by 2015 Ibrahim Diallo idiallo.com/photography" src="{{url_for('static', filename=main_content.image)}}" style="height: 32px" height="32"/>&nbsp;{{main_content.title}}</h1></div>
+                <div class="cell small-12  medium-4 text-center">
+                        {% for itm in menu %}
+                            <a class="button rounded bg-{{itm.uuid}} margin-horizontal-1 margin-vertical-0" href="{{url_for('wwwproject.eservices', page = itm.uuid)}}" ><img src="{{url_for('static', filename=itm.image)}}" style="height: 32px" height="32"/> {{itm.title}}</a>
+                        {% endfor %}
+                </div>
+
+                <div class="cell text-right small-12  medium-4 ">
+                    <a href="#projets" title="Connexion"  class="margin-horizontal-1 margin-vertical-0"><img src="{{url_for('static', filename='images/icons/user.png')}}" style="height: 32px" height="32"/></a>
+                    <a href="#projets" title="Contact us"  class="margin-horizontal-1 margin-vertical-0"><img src="{{url_for('static', filename='images/icons/contact_us.png')}}" style="height: 32px" height="32"/></a>
+                    <a href="#projets" title="About"  class="margin-horizontal-1 margin-vertical-0"><img src="{{url_for('static', filename='images/icons/info.png')}}" style="height: 32px" height="32"/></a>
+                    <a href="#projets" title="Couleur West IT"  class="margin-horizontal-1 margin-vertical-0"><img src="{{url_for('static', filename='images/icons/cwest.png')}}" style="height: 32px" height="32"/></a>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <main id="main_page" style="min-height: 100vh" >
+        <div class="padding-vertical-3">
+            {% block main_content %}
+            {% endblock %}
+        </div>
+     </main>
+    {% block footer %}
+    {% endblock %}
+</body>
+
+<script src="{{url_for ('static', filename='js/jquery.js')}}"></script>
+<script src="{{url_for ('static', filename='js/foundation.min.js')}}"></script>
+    {% block js %}{% endblock %}
+<script >
+    (function($, window, document) {
+        $(function () {
+            $(document).foundation();
+
+            {% block jquery %}
+            let $callouts = $('.callout.menubox').fadeOut();
+            $callouts.find('a.next').on('click', function () {
+                let $me = $(this);
+                let $container = $me.parents('.callout.menubox').hide();
+                $container.next('.callout.menubox').fadeIn();
+
+            });
+
+            $callouts.find('a.back').on('click', function () {
+                let $me = $(this);
+                let $container = $me.parents('.callout.menubox').hide();
+                $container.prev('.callout.menubox').fadeIn();
+            });
+
+            $callouts.first().fadeIn();
+
+            {% endblock %}
+            $('body').removeClass('is-hidden')
+        });
+    }(window.jQuery, window, document));
+    </script>
+</html>
+

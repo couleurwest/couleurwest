@@ -1,0 +1,347 @@
+@import 'wwwproject_color'
+@import "pm_font"
+
+%glasseffect
+  background: rgba(255, 255, 255, 0.19)
+  border-radius: 16px
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1)
+  backdrop-filter: blur(3.1px)
+  -webkit-backdrop-filter: blur(3.1px)
+  border: 1px solid rgba(255, 255, 255, 0.78)
+
+%gradienteffect
+  background: $color-primary
+  background: linear-gradient(0deg, rgba($color-primary_lite,0.6) 0%, rgba($color-primary,0.8) 133%)
+
+a
+  color: $color-secondary
+  &:hover
+    color: $color-secondary-lite
+
+
+/* Classes */
+.card-glass
+  @extend %glasseffect
+
+body
+    font-weight: normal
+    font-family: primary, Helvetica
+    background: $color-primary
+    color: $color-primary-lite
+    font-size: 16px
+    line-height: 1.4rem
+    min-height: 100vh
+
+
+h1, h2, h3
+    font-variant: all-petite-caps
+    color: $color-primary_lite
+
+h1
+    font-size: 2rem
+
+
+[type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color']
+    box-shadow: none
+    border: solid thin transparent
+    border-bottom: thin solid $color_secondary
+    background-color: transparent
+    color: $color_secondary_dark
+    text-align: center
+
+    &::placeholder
+        color: rgba(255,255,255, 0.7)
+        font-size: 0.85rem
+        font-style: italic
+
+    &:focus
+        background-color: rgba($color_secondary_lite, 0.5)
+        box-shadow: none
+        border: solid thin white
+        border-radius: 5px
+    &:hover
+        box-shadow: none
+        border: solid thin transparent
+        border-bottom: thin solid white
+
+
+    &, textarea
+        font-size: 0.9rem
+        margin: 0.5rem 0 0.5rem
+
+textarea
+    background-color: rgba($color_secondary_lite, 0.5)
+    white-space: pre-wrap!important
+
+#main_header
+    background-color: white
+    color: $color-primary
+.top-bar
+    background: inherit
+    backdrop-filter: blur(5px)
+
+.top-bar-sub
+    background: $color-primary-lite
+    background: linear-gradient(0deg, rgba($color-primary_dark,0.8) 50%, rgba($color-primary_dark, 0.5) 100%)
+    border-bottom: solid thin $color-primary_lite
+
+.top-bar-sub-white
+    background: $color-secondary
+    background: linear-gradient(274deg, $color-secondary 25%, $color-secondary-lite 55%, white 100%)
+
+input, select, textarea, label
+    font-weight: normal
+    font-size: inherit
+
+input, select, textarea
+    padding: 0.1rem 0.5rem
+    line-height: inherit
+
+text, .text-content
+    text-align: justify
+    display: inherit
+    white-space : pre-line
+    font-size: 1em
+    line-height: 1.8em
+
+.button, button
+    padding: 5px 10px 5px 5px
+    margin: 0.2rem
+    & > img
+        margin-right: 15px
+
+
+
+
+/******************************** Formulaire*/
+.label-input
+    margin-bottom: 1em
+
+.label-input:hover , .input-group-field:hover
+    border-color: $color_secondary_dark
+    color: #0B2E55
+
+
+.input-group-field
+    &:focus
+        border-top-color : $color-flash
+        border-left-color : $color-flash
+        border-bottom-color : $color-secondary-lite
+        border-right-color : $color-secondary-lite
+
+    &.error
+    border-bottom-color: $color-alert-dark
+    border-right-color: $color-alert-dark
+    background-color: var(--bg-grey)
+    border-top-color: $color-alert-lite
+    border-left-color: $color-alert-lite
+    text-align: inherit
+
+.co-button
+    box-shadow: 0px 5px 7px -4px #6e6e73
+    padding: 0.5em 1em
+    text-transform: uppercase
+    color: $color-primary
+    font-weight: bold
+    border: thin solid
+    background: $color-secondary
+    font-variant-caps: inherit
+    font-size: 0.8rem
+
+    &:hover
+	    background-color:  $color-primary
+	    color: inherit
+	    text-shadow: 0px 1px 0px $color-primary-lite
+
+    &  span
+        padding: 0
+        display: inline-block
+        vertical-align: baseline
+        border: none
+        background-color: transparent
+        background-repeat: no-repeat
+        background-size: contain
+        background-position: center center
+
+    & .ico,  & .ico-left
+        width: 48px
+        height: 32px
+
+    & .ico
+        border-right: solid thin blue
+        margin-right: 1em
+
+    & .ico-left
+        border-left: solid thin #007ea1
+        margin-left: 1.2rem
+
+.card
+    position: relative
+    margin: 0
+
+.card-header
+    padding: 0.5em 1em
+    display: block
+    background: $color-primary
+    height: auto
+    /* margin: 0 */
+    width: 100%
+    font-size: 1.5em
+    line-height: 2em
+    font-family: var(--font-standard)
+    text-align: left
+
+
+.card-header-clean
+    padding: 0
+    display: block
+    background: none
+    margin: 0
+
+.card-header .card-title
+    font-size: 1.5rem
+    line-height: 1.8rem
+
+.card-header-shadow
+    text-shadow: 1px 1px 2px white, 0 0 25px red, 0 0 5px var(--co-grey)
+
+.card-footer
+    border-top: thin solid $color-primary
+    font-size: 1rem
+    line-height: 2rem
+    min-height: 2rem
+    padding: 0.3em 0 0.5rem
+    display: block
+
+.text-error
+    color: $color-alert
+
+.fi-icon, .fi-icon::before
+    list-style: none
+    font-family: "foundation-icons"
+    font-style: normal
+    font-weight: normal
+    font-variant: normal
+    text-transform: none
+    line-height: 1
+    -webkit-font-smoothing: antialiased
+    display: inline-block
+    text-decoration: inherit
+
+.fi-icon li.bad
+    color: $color-flash
+.fi-icon li.bad:nth-child(odd)
+    color: $color-primary
+.fi-icon li:before
+    margin-right: 1em
+
+.fi-icon li.bad:before
+    content: '\f1a0'
+    color: $color-primary
+
+.fi-icon li.bad:nth-child(odd):before
+    color: $color-flash
+
+.fi-icon li.best
+    color: $color-success
+
+.fi-icon li.best:nth-child(even)
+    color: $color-warning
+.fi-icon li.best:before
+    content: '\f1ee'
+    color: $color-alert
+
+.img-captcha
+    width: 160px!important
+    height: 60px
+
+#back2Top
+    width: 40px
+    line-height: 40px
+    overflow: hidden
+    z-index: 999
+    display: none
+    cursor: pointer
+    -moz-transform: rotate(270deg)
+    -webkit-transform: rotate(270deg)
+    -o-transform: rotate(270deg)
+    -ms-transform: rotate(270deg)
+    transform: rotate(270deg)
+    position: fixed
+    bottom: 50px
+    right: 0
+    background-color: #DDD
+    color: #555
+    text-align: center
+    font-size: 30px
+    text-decoration: none
+    &:hover
+        background-color: #DDF
+        color: #000
+
+    #main-footer
+        background: linear-gradient(0deg, $color-primary, $color-primary-lite)
+
+#main-footer a:hover
+    color: $color-secondary
+
+.like-button
+    box-shadow: inset 0 0 2px $color-primary-lite
+    padding: 1rem
+
+.like-button:hover, .like-button:focus
+    box-shadow: 0 0 1px #000000, inset 0 0 4px #868ea7c7
+
+.top-bar, .top-bar ul
+    background-color: transparent
+
+a[data-check="check"]:after
+    content: none!important
+
+a.back::before
+    width: 0
+    height: 0
+    border: inset 20px
+    content: ''
+    border-left-width: 0
+    border-right-style: solid
+    border-color: transparent $color-secondary transparent transparent
+    display: inline-block
+    vertical-align: middle
+    margin-right: 0.75rem
+
+a.next::after
+    width: 0
+    height: 0
+    border: inset 20px
+    content: ''
+    border-right-width: 0
+    border-left-style: solid
+    border-color: transparent transparent transparent #4d848f
+    display: inline-block
+    vertical-align: middle
+    margin-left: 0.75rem
+
+
+.no-border
+    border: none
+
+
+.card.submenu > footer
+    bottom: 0
+    position: absolute
+    text-align: center
+    width: 100%
+    display: block
+    left: 0
+    padding: 1rem
+
+
+
+.card-glass
+  background: rgba(255, 255, 255, 0.19)
+  border-radius: 16px
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1)
+  backdrop-filter: blur(3.1px)
+  -webkit-backdrop-filter: blur(3.1px)
+  border: 1px solid rgba(255, 255, 255, 0.78)

@@ -1,0 +1,33 @@
+{% extends 'wwwproject/base.html' %}
+
+{% block main_content %}
+<div class="row card-mother width-100">
+    <div class="callout large text-center card-glass bg-{{content.uuid}}">
+        <article class="text-center "> {{ content.content }}</article>
+    </div>
+</div>
+<div class="grid-x grid-padding-x small-up-1 medium-up-3 large-up-4 align-center margin-vertical-2" data-equalizer="projets" data-equalize-by-row="projets">
+    {% for items in content.detail %}
+        <div class="cell height-100" data-equalizer-watch="projets">
+            <div class="card card-glass height-100 brd-{{content.uuid}}-lite">
+                <header class="card-header card-title bg-{{content.uuid}}">{{items.title}}</header>
+                <section class="card-section" id="{{items.uuid}}_article" >
+                    <article data-toggle="{{items.uuid}}_article {{items.uuid}}_image" style="font-size:0.85rem">
+                        {{items.information|safe}}
+                    </article>
+                </section>
+                <section id="{{items.uuid}}_image"  class="card-section card-image align-center-middle">
+                    <div class="align-center-middle text-center" data-toggle="{{items.uuid}}_article {{items.uuid}}_image">
+                        <img src="{{url_for('static', filename= items.image or 'images/projets/' + page + '.png')}}" width="100%" style="width: 100%"/>
+                    </div>
+                </section>
+                <section class="card-footer text-center">
+                    <div class="card-section card-divider" style="font-size:0.7rem">{{items.topic|safe}}</div>
+                    {% if items.link %}<div class="card-section"><a href="{{items.link}}">application</a></div>{% endif %}
+                </section>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,339 @@
+@import "cwest_color"
+@import "method"
+
+%glasseffect
+  @include backgroud-opacity($color-secondary, 0.5)
+  box-shadow: 0 4px 30px rgba(black, 0.1)
+  backdrop-filter: blur(3.1px)
+  -webkit-backdrop-filter: blur(3.1px)
+  border-radius: 16px
+  border: 1px solid rgba($color-secondary-lite, 0.78)
+
+%gradienteffect
+  background: $color-primary
+  background: linear-gradient(0deg, $color-primary-lite 0%, $color-primary 133%)
+
+
+body
+    font-weight: normal
+    font-family: var(--font-standard)
+    background: $color-primary-lite
+    color: $color-secondary-lite
+    font-size: 18px
+    line-height: 1.4rem
+    min-height: 100vh
+
+    &.home #main_header
+        background-color: $color-primary!important
+
+
+h1, h2, h3
+    font-variant: all-petite-caps
+    color: $color-primary
+    font-weight: bold
+
+    &:hover
+        color: $color-primary-lite
+a
+    color: $color-info-lite
+    &:hover, &:focus
+        color: $color-flash-lite
+.top-bar
+    background: inherit
+    backdrop-filter: blur(5px)
+    & a
+        color: $color-flash-lite
+        &:hover
+            color: $color-flash
+
+.top-bar-sub
+    background: $color-primary-lite
+    background: linear-gradient(0deg,  $color-primary 55%, $color-primary-lite 100%)
+
+.top-bar-sub-white
+    background: $color-secondary
+    background: linear-gradient(0deg, $color-secondary 25%, $color-secondary-lite 55%, white 100%)
+
+input, select, textarea, label
+    font-weight: normal
+    font-size: inherit
+
+input, select, textarea
+    padding: 0.1rem 0.5rem
+    line-height: inherit
+
+text, .text-content
+    text-align: justify
+    display: inherit
+    white-space : pre-line
+    font-size: 1em
+    line-height: 1.8em
+
+textarea
+    white-space: pre-wrap!important
+
+
+/******************************** Formulaire*/
+.label-input
+    margin-bottom: 1em
+
+.label-input:hover , .input-group-field:hover
+    border-color: #0B2E55
+    color: #0B2E55
+
+
+.input-group-field
+    &:focus
+        border-top-color : $color-flash
+        border-left-color : $color-flash
+        border-bottom-color : $color-secondary-lite
+        border-right-color : $color-secondary-lite
+
+    &.error
+    border-bottom-color: $color-alert-dark
+    border-right-color: $color-alert-dark
+    background-color: var(--bg-grey)
+    border-top-color: $color-alert-lite
+    border-left-color: $color-alert-lite
+    text-align: inherit
+
+
+.button
+  padding: 5px 10px 5px 5px
+
+  & > img
+    margin-right: 15px
+
+.co-button
+    padding: 0.5em 1em
+    text-transform: uppercase
+    color: $color-info
+    font-weight: bold
+    border: thin solid transparent
+    background: $color-info-dark
+    font-variant-caps: inherit
+    font-size: 0.8rem
+
+    &:hover, &:focus
+	    background-color:  $color-info
+	    color: $color-info-dark
+	    border: thin solid $color-info-lite
+
+    &:visited
+        color: $color-info-lite
+
+    &  span
+        padding: 0
+        display: inline-block
+        vertical-align: baseline
+        border: none
+        background-color: transparent
+        background-repeat: no-repeat
+        background-size: contain
+        background-position: center center
+
+    & .ico,  & .ico-left
+        width: 48px
+        height: 32px
+
+    & .ico
+        border-right: solid thin blue
+        margin-right: 1em
+
+    & .ico-left
+        border-left: solid thin #007ea1
+        margin-left: 1.2rem
+
+
+.card
+    position: relative
+    margin: 0
+
+.card-header
+    padding: 0.5em 1em
+    display: block
+    background: $color-primary
+    height: auto
+    /* margin: 0 */
+    width: 100%
+    font-size: 1.5em
+    line-height: 2em
+    font-family: var(--font-standard)
+    text-align: left
+
+
+.card-header-clean
+    padding: 0
+    display: block
+    background: none
+    margin: 0
+
+.card-header .card-title
+    font-size: 1.5rem
+    line-height: 1.8rem
+
+.card-header-shadow
+    text-shadow: 1px 1px 2px white, 0 0 25px red, 0 0 5px var(--co-grey)
+
+.card-footer
+    border-top: thin solid $color-primary
+    font-size: 1rem
+    line-height: 2rem
+    min-height: 2rem
+    padding: 0.3em 0 0.5rem
+    display: block
+
+.text-error
+    color: $color-alert
+
+.fi-icon, .fi-icon::before
+    list-style: none
+    font-family: "foundation-icons"
+    font-style: normal
+    font-weight: normal
+    font-variant: normal
+    text-transform: none
+    line-height: 1
+    -webkit-font-smoothing: antialiased
+    display: inline-block
+    text-decoration: inherit
+
+.fi-icon li.bad
+    color: $color-flash
+.fi-icon li.bad:nth-child(odd)
+    color: $color-primary
+.fi-icon li:before
+    margin-right: 1em
+
+.fi-icon li.bad:before
+    content: '\f1a0'
+    color: $color-primary
+
+.fi-icon li.bad:nth-child(odd):before
+    color: $color-flash
+
+.fi-icon li.best
+    color: $color-success
+
+.fi-icon li.best:nth-child(even)
+    color: $color-warning
+.fi-icon li.best:before
+    content: '\f1ee'
+    color: $color-alert
+
+.img-captcha
+    width: 160px!important
+    height: 60px
+
+#back2Top
+    width: 40px
+    line-height: 40px
+    overflow: hidden
+    z-index: 999
+    display: none
+    cursor: pointer
+    -moz-transform: rotate(270deg)
+    -webkit-transform: rotate(270deg)
+    -o-transform: rotate(270deg)
+    -ms-transform: rotate(270deg)
+    transform: rotate(270deg)
+    position: fixed
+    bottom: 50px
+    right: 0
+    background-color: #DDD
+    color: #555
+    text-align: center
+    font-size: 30px
+    text-decoration: none
+    &:hover
+        background-color: #DDF
+        color: #000
+
+    #main-footer
+        background: linear-gradient(0deg, $color-primary, $color-primary-lite)
+
+#main-footer a:hover
+    color: $color-secondary
+
+
+.like-button
+    box-shadow: inset 0 0 2px $color-primary-lite
+    padding: 1rem
+
+    &.card
+        background: linear-gradient(180deg, #6f8361 10%, #6f8361aa 100%)
+        border-color: #c4f3a1
+
+    h4
+        color: #62463a
+    p
+        color: #21362d
+        font-size: 1rem
+
+
+    &:hover, &:focus
+        box-shadow: 0 0 1px #000000, inset 0 0 4px #868ea7c7
+        background: linear-gradient(180deg, #839b73 10%, rgba(123, 154, 100, 0.67) 100%)
+
+
+
+
+
+.top-bar, .top-bar ul
+    background-color: transparent
+
+a[data-check="check"]:after
+    content: none!important
+
+a.back::before
+    width: 0
+    height: 0
+    border: inset 20px
+    content: ''
+    border-left-width: 0
+    border-right-style: solid
+    border-color: transparent $color-secondary transparent transparent
+    display: inline-block
+    vertical-align: middle
+    margin-right: 0.75rem
+
+a.next::after
+    width: 0
+    height: 0
+    border: inset 20px
+    content: ''
+    border-right-width: 0
+    border-left-style: solid
+    border-color: transparent transparent transparent #4d848f
+    display: inline-block
+    vertical-align: middle
+    margin-left: 0.75rem
+
+
+.no-border
+    border: none
+
+
+.card.submenu > footer
+    bottom: 0
+    position: absolute
+    text-align: center
+    width: 100%
+    display: block
+    left: 0
+    padding: 1rem
+
+
+/* Classes */
+.card-glass
+    @extend %glasseffect
+    color: white
+    margin: 0
+
+.card-glass
+  background: rgba(255, 255, 255, 0.19)
+  border-radius: 16px
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1)
+  backdrop-filter: blur(3.1px)
+  -webkit-backdrop-filter: blur(3.1px)
+  border: 1px solid rgba(255, 255, 255, 0.78)

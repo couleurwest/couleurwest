@@ -1,0 +1,71 @@
+@use "sass:map"
+
+$color-primary-lite: #22427C
+$color-primary: #003366
+
+$color-secondary: #5A5E6B
+$color-secondary-lite: #c2c2c2
+
+$color-flash: #723E64
+$color-flash-lite: #BBACAC
+
+$color-alert-dark: #bd385e
+$color-alert: #D97699
+$color-alert-lite: #F5C9D8
+
+$color-warning-dark: #bd8b28
+$color-warning: #F7CF7B
+$color-warning-lite: #DAD8A7
+
+$color-success-dark: #23755e
+$color-success: #32a484
+$color-success-lite: #7FC7AF
+
+$color-info-dark: #276065
+$color-info: #3f929b
+$color-info-lite: #54cad9
+
+$success : ( "dark": $color-success-dark, "primary": $color-success, "lite": $color-success-lite )
+$infos : ( "dark": $color-info-dark, "primary": $color-info, "lite": $color-info-lite )
+$warnings : ( "dark": $color-warning-dark, "primary": $color-warning, "lite": $color-warning-lite )
+$alerts : ( "dark": $color-alert-dark, "primary": $color-alert, "lite": $color-alert-lite )
+
+$colors:  ("success" : $success, "info" : $infos, "warning" : $warnings, "alert": $alerts)
+$theme_trio: ["success", "info", "warning", "alert"]
+
+@each $v in $theme_trio
+    .bg-#{$v}
+      $c: map-get($colors, $v)
+      background-color: map-get($c, "primary")!important
+      color:  map-get($c, "lite")!important
+      border-color:  map-get($c, "dark")!important
+
+      &.button:hover
+        background-color: map-get($c, "lite")!important
+        color:  map-get($c, "dark")!important
+        border-color:  map-get($c, "primary")!important
+
+
+
+
+$primary : ( "primary": $color-primary, "lite": $color-primary-lite )
+$secondary : ("primary": $color-secondary, "lite": $color-secondary-lite )
+$flash : ( "primary": $color-flash, "lite": $color-flash-lite )
+$android : ( "primary": $color-warning-dark, "lite": $color-warning )
+
+$colors_duo:  ("primary" : $primary, "secondary" : $secondary, "flash" : $flash,"webservices": $success, "android": $android, "standalone": $flash)
+$theme_duo: ["primary", "secondary", "flash", "webservices", "android", "standalone"]
+
+
+@each $v in $theme_duo
+    .bg-#{$v}, a.bg-#{$v}
+      $c: map-get($colors_duo, $v)
+
+      background-color: map-get($c, "primary")!important
+      color:  map-get($c, "lite")!important
+      border-color:  map-get($c, "lite")!important
+
+      &.button:hover
+        background-color: map-get($c, "lite")!important
+        color:  map-get($c, "primary")!important
+        border-color:  map-get($c, "primary")!important

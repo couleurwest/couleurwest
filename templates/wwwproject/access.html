@@ -1,0 +1,111 @@
+{% extends 'wwwproject/base.html' %}
+
+{% from "_macros_.html" import render_nonamed %}
+{% block main_content %}
+<div class="grid-y align-center-middle">
+    <div class="callout text-center card-glass big-daddy"  style="width:600px">
+        <div class="grid-y grid-margin-y align-center-middle">
+            <div class="cell  width-100">
+                <div id="sup-block-btn" class="grid-y margin-bottom-1" data-toggler="is-hidden" >
+                    <div class=""><button type="button" class="button bg-info expanded" data-toggle="signup signin sup-submit-btn sin-submit-btn sup-block-btn sin-block-btn signin-title signup-title">Je n'ai pas de compte</button></div>
+                </div>
+                <div  id="sin-block-btn" class="grid-y margin-bottom-1 is-hidden" data-toggler="is-hidden">
+                    <div class=""><button type="button" class="button bg-success expanded" data-toggle="signup signin sup-submit-btn sin-submit-btn sup-block-btn sin-block-btn signin-title signup-title">J'ai déjà un compte</button></div>
+                </div>
+                <form method="post" class="cell align-center-middle">
+
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                    <div class="callout card-glass">
+                    <h2 id="signin-title" class="txt-success-dark width-100" data-toggler="is-hidden">CONNEXION</h2>
+                    <h2 id="signup-title"  class="txt-info-dark width-100 is-hidden" data-toggler="is-hidden">INSCRIPTION</h2>
+
+                        <fieldset id="signin" class="grid-x grid-margin-x align-center-middle" data-toggler="is-hidden" >
+                            <div class="cell">{{render_nonamed (form_cnx.login)}}</div>
+                            <div class="cell">{{render_nonamed (form_cnx.password)}}</div>
+                        </fieldset>
+                        <fieldset id="signup" class="grid-x grid-margin-x align-center-middle is-hidden" data-toggler="is-hidden">
+                            <div class="cell"> {{render_nonamed (form_sin.login)}}
+                                <span class="input-info" id="unique-login"></span></div>
+                            <div class="cell">{{render_nonamed (form_sin.name)}}</div>
+                            <div class="cell">{{render_nonamed (form_sin.email)}}</div>
+                            <div class="cell">{{render_nonamed (form_sin.password)}}</div>
+                            <div class="cell">{{render_nonamed (form_sin.confirm)}}</div>
+                        </fieldset>
+                    <!-- CAPTCHA -->
+                        <div class="grid-x margin-vertical-1">
+                            <div class="cell text-center">
+                                {{ captcha_html(captcha) | safe }}
+                                <small><em>Touche [F5] pour rafraichir le captcha</em></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-x grid-margin-x align-center-middle"><!-- BUTTONS -->.
+                        <div id ="sup-submit-btn" class="cell auto" data-toggler="is-hidden">
+                            <button type="submit" class="button bg-success expanded" name="signin">Connexion</button>
+                        </div>
+                        <div id ="sin-submit-btn" class="cell auto is-hidden" data-toggler="is-hidden">
+                            <button type="submit" class="button bg-info expanded" name="signup">Inscription</button>
+                        </div>
+                    </div>
+                        <div class="cell auto shrink">
+                            <a href="#cgu" class="margin-top-1"  title="cgu" data-open="cgu-reveal"><small><em>Conditions générales</em></small></a>
+                        </div>
+                </form>
+            </div>
+        </div>
+        <div class="tiny reveal card card-glass bg-info" id="cgu-reveal" data-reveal>
+            <div class="card card-glass ">
+                <h3 class="card card-glass bg-info text-center" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0">Conditions d'utilisation</h3>
+                <article class="padding-2">
+                    <dl><dt>Le login </dt>
+                    <dd>identifiant de connexion unique</dd>
+                    <dt>Le Nom </dt>
+                    <dd>Le nom servira à vous identifier auprès de vos invités</dd>
+                    <dt>Adresse électronique</dt>
+                    <dd>L'adresse électronique sert principalement à assurer l'intégrité de votre connexion ainsi que la récupération des résultats de vos enquête</dd>
+                </dl>
+                <hr/>
+                <small><em>
+                    Aucune données personnelles n'est échangés ou partagés. L'utilisation de vos coordonnées est conditionnée au cadre actuel d'utilisation et ne sont conservés que le temps de vos enquêtes plus 30 jours.
+                Si vous ne créé pas d'enquête, votre compte et tous ce qu'il contient ser a supprimé dans les sept jours.
+                </em></small>
+                    </article>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block jquery %}
+    $('.simple-captcha-text').attr('placeholder', 'captcha').prop('required', true);
+
+    let $form = $('form');
+    let $form_lgn = $('form #signin');
+    let $form_sin = $('form #signup');
+    let $span_unique_login = $("#unique-login");
+
+
+    $('button[type=submit][name=signin]').click(function (e) {
+        $form_lgn.prop('disabled', false);
+        $form_sin.prop('disabled', true);
+    });
+    let $btn_signup = $('button[type=submit][name=signup]').click(function (e) {
+        $form_lgn.prop('disabled', true);
+        $form_sin.prop('disabled', false);
+    });
+
+    let $unique_login = $form_sin.find('[name=login]').on('input', function () {
+        //login unique dans la base
+        let txt = $unique_login.val();
+        if (txt.length >= 3)
+            $.get(`/login=${txt}`).done(function () {
+                $span_unique_login.text('login non attribué');
+                $btn_signup.prop('disabled', false);
+            }).fail(function () {
+                $span_unique_login.text('login déjà attribué');
+                $btn_signup.prop('disabled', true);
+            });
+        else
+            $span_unique_login.text('3 caracteres minimum');
+    });
+{% endblock %}
